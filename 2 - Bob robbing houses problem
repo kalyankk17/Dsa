@@ -1,0 +1,43 @@
+Given an array of non-negative integers representing the amount of money in each house, Bob cannot rob two adjacent houses. Find the maximum amount of money Bob can rob.
+# Example usage:
+# puts rob([2,7,9,3,1]) # Output: 12
+
+basic idea from robbers shoes.
+i can rob the current house and skip the next house.
+i can skip the current house.
+
+
+bruteforce
+
+time = o(2^n)
+space = o(n)
+
+def rob(nums , i = 0)
+ return 0 if i >= nums.length 
+
+ rob_current = nums[i] + rob(nums, i + 2)
+ skip = rob(nums, i + 1)
+ [rob_current , skip].max
+end 
+
+
+
+optimal 
+
+
+def rob(nums)
+return 0 if nums.length <= 0
+
+prev1 = 0
+prev2 = 0
+
+numbers.each do | num|
+ temp = prev1
+ prev1 = [prev2 + num, prev1].max
+ prev2 = temp
+ 
+end 
+
+prev1
+end 
+
