@@ -1,0 +1,74 @@
+An integer array is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same.
+
+For example, [1,3,5,7,9], [7,7,7,7], and [3,-1,-5,-9] are arithmetic sequences.
+Given an integer array nums, return the number of arithmetic subarrays of nums.
+
+A subarray is a contiguous subsequence of the array.
+
+example output:
+
+subarrays = [1,3,5] , [3,5,7], [5,7,9] , [1,3,5,7] , [1,3,5,7,9]
+
+
+
+bruteforce approach 
+
+two loops which checks diff at outer loop and diff at individual inner loop
+
+o(n^2) time complexity
+
+
+
+
+def num_arth_sub(numbers)
+ n = numbers.size
+ return 0 if n < 3
+
+ count = 0
+
+ (0..(n - 3)).each do | i|
+   diff = numbers[i + 1] - numbers[i]
+   (i+2...n).each do |j|
+     if diff == (numbers[j] - numbers[j-1])
+         count += 1
+     else 
+       break
+     end 
+   end 
+ end 
+  
+ 
+count
+end 
+
+
+
+
+
+optimal approach 
+cur += 1
+count += cur
+
+def num_arth_sub(numbers)
+ n = numbers.size
+ return 0 if n < 3
+
+ curr = 0
+ count = 0
+
+ (2...n).each do |i|
+    if numbers[i] - numbers[i-1] == numbers[i-1] - numbers[i-2]
+       curr += 1
+       count += curr
+    else
+      count
+    end 
+  end 
+  
+ 
+count
+end 
+
+
+
+
